@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		361443A52A405A0700B1C67C /* ConversationsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 361443A42A405A0700B1C67C /* ConversationsCell.swift */; };
+		361443A72A405E5100B1C67C /* NewMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 361443A62A405E5100B1C67C /* NewMessageView.swift */; };
+		361443A92A405E5C00B1C67C /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 361443A82A405E5C00B1C67C /* UserCell.swift */; };
 		366639232A39D6C2005E8EFA /* SwiftUIChatTutorialApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 366639222A39D6C2005E8EFA /* SwiftUIChatTutorialApp.swift */; };
 		366639252A39D6C2005E8EFA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 366639242A39D6C2005E8EFA /* ContentView.swift */; };
 		366639272A39D6C2005E8EFA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 366639262A39D6C2005E8EFA /* Assets.xcassets */; };
@@ -32,6 +35,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		361443A42A405A0700B1C67C /* ConversationsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationsCell.swift; sourceTree = "<group>"; };
+		361443A62A405E5100B1C67C /* NewMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMessageView.swift; sourceTree = "<group>"; };
+		361443A82A405E5C00B1C67C /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
 		3666391F2A39D6C2005E8EFA /* SwiftUIChatTutorial.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftUIChatTutorial.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		366639222A39D6C2005E8EFA /* SwiftUIChatTutorialApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIChatTutorialApp.swift; sourceTree = "<group>"; };
 		366639242A39D6C2005E8EFA /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -204,6 +210,9 @@
 			isa = PBXGroup;
 			children = (
 				367CED4B2A3ABC5700531501 /* ConversationsView.swift */,
+				361443A42A405A0700B1C67C /* ConversationsCell.swift */,
+				361443A62A405E5100B1C67C /* NewMessageView.swift */,
+				361443A82A405E5C00B1C67C /* UserCell.swift */,
 			);
 			path = Conversations;
 			sourceTree = "<group>";
@@ -298,6 +307,7 @@
 				367CED502A3AE3F200531501 /* SettingsCell.swift in Sources */,
 				366639252A39D6C2005E8EFA /* ContentView.swift in Sources */,
 				367CED4E2A3ACE2200531501 /* SettingsHeaderView.swift in Sources */,
+				361443A92A405E5C00B1C67C /* UserCell.swift in Sources */,
 				367CED4C2A3ABC5700531501 /* ConversationsView.swift in Sources */,
 				366639232A39D6C2005E8EFA /* SwiftUIChatTutorialApp.swift in Sources */,
 				367CED5F2A3B148900531501 /* StatusCell.swift in Sources */,
@@ -306,7 +316,9 @@
 				367CED492A3AA78F00531501 /* ChatsView.swift in Sources */,
 				367CED612A3B1ED300531501 /* ImagePicker.swift in Sources */,
 				367CED402A3AA68B00531501 /* MainTabView.swift in Sources */,
+				361443A72A405E5100B1C67C /* NewMessageView.swift in Sources */,
 				367CED452A3AA77900531501 /* ChannelsViews.swift in Sources */,
+				361443A52A405A0700B1C67C /* ConversationsCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

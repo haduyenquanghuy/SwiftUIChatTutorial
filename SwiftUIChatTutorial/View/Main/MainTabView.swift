@@ -16,13 +16,14 @@ struct MainTabView: View {
     
     // MARK: - BODY
     var body: some View {
-       
+        
+        
+        TabView(selection: $selectedTab) {
             
-            TabView(selection: $selectedTab) {
+            ForEach(MainTabViewType.allTabs, id: \.self) { type in
                 
-                ForEach(MainTabViewType.allTabs, id: \.self) { type in
-                    
-                    Group {
+                Group {
+                    NavigationView {
                         switch type {
                             case .conversations:
                                 ConversationsView()
@@ -32,26 +33,27 @@ struct MainTabView: View {
                                 SettingsView()
                         }
                     }
-                    .tabItem {
-                        Image(systemName: type.imageName)
-                    }
-                    .tag(type)
                 }
-                // END: FOR EACH
+                .tabItem {
+                    Image(systemName: type.imageName)
+                }
+                .tag(type)
             }
-            .navigationTitle(tabTitles)
-            .onChange(of: selectedTab) {
-                tabTitles = $0.title
-            }
-            .onAppear {
-                tabTitles = selectedTab.title
-            }
-            // END: TabView
+            // END: FOR EACH
+        }
+        .navigationTitle(tabTitles)
+        .onChange(of: selectedTab) {
+            tabTitles = $0.title
+        }
+        .onAppear {
+            tabTitles = selectedTab.title
+        }
+        // END: TabView
     }
     
     
     // MARK: - FUNCTIONS
-
+    
 }
 
 enum MainTabViewType {

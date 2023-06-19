@@ -9,7 +9,7 @@ import SwiftUI
 
 struct SettingsView: View {
     var body: some View {
-        NavigationView {
+
             ZStack {
                 Color(.systemGroupedBackground)
                     .ignoresSafeArea()
@@ -43,7 +43,7 @@ struct SettingsView: View {
             }
             .navigationTitle("Settings")
             .navigationBarTitleDisplayMode(.large)
-        }
+
     }
 }
 

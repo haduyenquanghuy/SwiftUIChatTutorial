@@ -12,6 +12,7 @@ struct EditProfileView: View {
     @State private var fullname = "Eddie Brock"
     @State private var showImagePicker = false
     @State private var selectedImage: UIImage?
+    @State private var profileImage: Image?
     
     var body: some View {
         ZStack {
@@ -20,17 +21,21 @@ struct EditProfileView: View {
                 .ignoresSafeArea()
             
             VStack(alignment: .leading, spacing: 44) {
-                
                 VStack {
-                    
                     HStack {
-                        
                         VStack {
-                            Image(systemName: "person.circle.fill")
-                                .resizable()
-                                .scaledToFill()
-                                .frame(width: 64, height: 64)
-                                .clipShape(Circle())
+                            Group {
+                                if let profileImage = profileImage {
+                                    profileImage
+                                        .resizable()
+                                } else {
+                                    Image(systemName: "person.circle.fill")
+                                        .resizable()
+                                }
+                            }
+                            .scaledToFill()
+                            .frame(width: 64, height: 64)
+                            .clipShape(Circle())
                             
                             Button(action: {
                                 showImagePicker = true
@@ -83,13 +88,20 @@ struct EditProfileView: View {
                 Spacer()
             }
             .padding(.top, 1)
-            .sheet(isPresented: $showImagePicker) {
+            .sheet(isPresented: $showImagePicker, onDismiss: loadImage) {
                 ImagePicker(selectedImage: $selectedImage)
             }
             
         }
         .navigationTitle("Edit Profile")
         .navigationBarTitleDisplayMode(.inline)
+    }
+    
+    func loadImage() {
+        
+        guard let selectedImage = selectedImage else { return }
+        
+        profileImage  = Image(uiImage: selectedImage)
     }
 }
 

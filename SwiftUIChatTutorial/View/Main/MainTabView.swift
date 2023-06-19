@@ -9,7 +9,6 @@ import SwiftUI
 
 struct MainTabView: View {
     
-    
     // MARK: - PROPERTIES
     @State private var selectedTab: MainTabViewType = .conversations
     @State private var tabTitles: String = ""
@@ -17,7 +16,7 @@ struct MainTabView: View {
     
     // MARK: - BODY
     var body: some View {
-        NavigationView {
+       
             
             TabView(selection: $selectedTab) {
                 
@@ -48,7 +47,6 @@ struct MainTabView: View {
                 tabTitles = selectedTab.title
             }
             // END: TabView
-        }
     }
     
     

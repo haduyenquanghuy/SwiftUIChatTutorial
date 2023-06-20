@@ -11,9 +11,21 @@ struct NewMessageView: View {
     
     @Binding var showChatView: Bool
     @Environment(\.presentationMode) var mode
+    @State private var searchText = ""
+    @State private var isEditing = false
     
     var body: some View {
         ScrollView {
+            
+            SearchBar(text: $searchText, isEditing: $isEditing)
+                .padding()
+                .onTapGesture {
+                    withAnimation(.linear(duration: 0.15)) {
+                        isEditing = true
+                    }
+                }
+                
+            
             VStack(alignment: .leading) {
                 ForEach(0 ... 10, id: \.self) { _ in
                     Button(action: {

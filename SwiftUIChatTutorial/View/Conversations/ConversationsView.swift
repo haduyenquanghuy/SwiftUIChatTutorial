@@ -8,11 +8,19 @@
 import SwiftUI
 
 struct ConversationsView: View {
+    
+    @State private var showNewMessageView = false
+    @State private var showChatView = false
+    
     var body: some View {
         ZStack(alignment: .bottomTrailing) {
+            
+            NavigationLink(destination: ChatsView(), isActive: $showChatView) {
+                
+            }
+            
             ScrollView {
                 VStack(alignment: .leading) {
-                    
 
                     ForEach(0 ... 10, id: \.self) { _ in
                         ConversationsCell()
@@ -22,7 +30,7 @@ struct ConversationsView: View {
             }
             
             Button(action: {
-                print("Show user list sheet...")
+                showNewMessageView = true
             }) {
               Image(systemName: "square.and.pencil")
                     .resizable()
@@ -34,6 +42,9 @@ struct ConversationsView: View {
             .foregroundColor(.white)
             .clipShape(Circle())
             .padding()
+            .sheet(isPresented: $showNewMessageView) {
+                NewMessageView(showChatView: $showChatView)
+            }
         }
         .navigationTitle("Chats")
         .navigationBarTitleDisplayMode(.large)

@@ -14,6 +14,7 @@ struct RegistrationView: View {
     @State private var fullname = ""
     @State private var username = ""
     @Environment(\.presentationMode) var presentationMode
+    @ObservedObject var viewModel = AuthViewModel()
     
     
     var body: some View {
@@ -39,18 +40,18 @@ struct RegistrationView: View {
                                     text: $email)
                     
                     CustomTextField(imageName: "person",
-                                    placeholderText: "Email",
+                                    placeholderText: "Username",
                                     isSecureField: false,
                                     text: $username)
                     
                     CustomTextField(imageName: "person",
-                                    placeholderText: "Email",
+                                    placeholderText: "Full name",
                                     isSecureField: false,
                                     text: $fullname)
                     
-                    CustomTextField(imageName: "person",
-                                    placeholderText: "Email",
-                                    isSecureField: false,
+                    CustomTextField(imageName: "lock",
+                                    placeholderText: "Password",
+                                    isSecureField: true,
                                     text: $password)
                     
                 }
@@ -60,18 +61,18 @@ struct RegistrationView: View {
             .padding(.leading)
             
             Button(action: {
-                                print("Handle sign up...")
-                            }) {
-                                Text("Sign Up")
-                                    .font(.headline)
-                                    .foregroundColor(.white)
-                                    .frame(width: 340, height: 50)
-                                    .background(Color.blue)
-                                    .clipShape(Capsule())
-                                    .padding()
-                            }
-                            .padding(.top, 24)
-                            .shadow(color: .gray, radius: 10, x: 0.0, y: 0.0)
+                viewModel.register(withEmail: email, password: password, fullname: fullname, username: username)
+            }) {
+                Text("Sign Up")
+                    .font(.headline)
+                    .foregroundColor(.white)
+                    .frame(width: 340, height: 50)
+                    .background(Color.blue)
+                    .clipShape(Capsule())
+                    .padding()
+            }
+            .padding(.top, 24)
+            .shadow(color: .gray, radius: 10, x: 0.0, y: 0.0)
             
             Spacer()
             
@@ -87,9 +88,9 @@ struct RegistrationView: View {
                         .font(.system(size: 14, weight: .semibold))
                 }
             }
-//            .padding(.bottom, 20)
+            //            .padding(.bottom, 20)
         }
-//        .toolbar(.hidden)
+        //        .toolbar(.hidden)
     }
 }
 

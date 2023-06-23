@@ -25,7 +25,7 @@ struct SwiftUIChatTutorialApp: App {
 
   var body: some Scene {
       WindowGroup {
-          MainTabView()
+          LoginView()
       }
   }
 }

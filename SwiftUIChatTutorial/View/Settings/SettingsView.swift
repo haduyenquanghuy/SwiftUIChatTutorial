@@ -8,6 +8,13 @@
 import SwiftUI
 
 struct SettingsView: View {
+    
+    private let user: User
+    
+    init(user: User) {
+        self.user = user
+    }
+    
     var body: some View {
 
             ZStack {
@@ -17,7 +24,7 @@ struct SettingsView: View {
                 VStack(spacing: 32) {
                     
                     NavigationLink(destination: EditProfileView()) {
-                        SettingsHeaderView()
+                        SettingsHeaderView(user: user)
                             .padding(.top, 1)
                     }
                     .buttonStyle(PlainButtonStyle())
@@ -29,7 +36,7 @@ struct SettingsView: View {
                     }
                     
                     Button(action: {
-                        print("Handle log out here")
+                        AuthViewModel.shared.signout()
                     }) {
                         Text("Log out")
                             .foregroundColor(.red)
@@ -43,12 +50,5 @@ struct SettingsView: View {
             }
             .navigationTitle("Settings")
             .navigationBarTitleDisplayMode(.large)
-
-    }
-}
-
-struct SettingsView_Previews: PreviewProvider {
-    static var previews: some View {
-        SettingsView()
     }
 }

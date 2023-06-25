@@ -12,6 +12,7 @@ struct ProfilePhotoSelectorView: View {
     @State private var imagePickerPresented = false
     @State private var selectedImage: UIImage?
     @State private var profileImage: Image?
+    
     @EnvironmentObject var viewModel: AuthViewModel
     
     var body: some View {
@@ -46,12 +47,12 @@ struct ProfilePhotoSelectorView: View {
             
             Text(profileImage == nil ? "Selected a profile photo" : "Great! Tap below to continue")
                 .font(.system(size: 18, weight: .semibold))
-                .padding(.top, 32)
+                .padding(.top, 12)
             
             if let image = selectedImage {
                 
                 Button(action: {
-                    viewModel.uploadProfileImage()
+                    viewModel.uploadProfileImage(image)
                 }) {
                     Text("Continue")
                         .font(.headline)
@@ -62,7 +63,7 @@ struct ProfilePhotoSelectorView: View {
                         .padding()
                 }
                 .shadow(color: .gray, radius: 10, x: 0.0, y: 0.0)
-                .padding(.top, 24)
+                .padding(.top, 12)
             }
                 
             Spacer()

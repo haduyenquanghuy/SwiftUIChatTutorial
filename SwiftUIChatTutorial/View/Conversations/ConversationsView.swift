@@ -11,23 +11,22 @@ struct ConversationsView: View {
     
     @State private var showNewMessageView = false
     @State private var showChatView = false
+    @State private var selectedUser: User?
+    @ObservedObject var viewModel = ConversationsViewModel()
     
     var body: some View {
         ZStack(alignment: .bottomTrailing) {
             
-            NavigationLink(destination: ChatsView(), isActive: $showChatView) {
-                
+            if let user = selectedUser {
+                NavigationLink(destination: ChatsView(user: user), isActive: $showChatView) {}
             }
             
             ScrollView {
                 VStack(alignment: .leading) {
 
-                    ForEach(0 ... 10, id: \.self) { _ in
+                    ForEach(viewModel.recentMessages) { message in
                         
-                        NavigationLink(destination: ChatsView()) {
-                            ConversationsCell()
-                        }
-                           
+                        ConversationsCell(viewModel: ConversationCellViewModel(message))
                     }
                 }
             }
@@ -46,11 +45,14 @@ struct ConversationsView: View {
             .clipShape(Circle())
             .padding()
             .sheet(isPresented: $showNewMessageView) {
-                NewMessageView(showChatView: $showChatView)
+                NewMessageView(showChatView: $showChatView, user: $selectedUser)
             }
         }
         .navigationTitle("Chats")
         .navigationBarTitleDisplayMode(.large)
+        .onAppear {
+            viewModel.fetchRecentMessages()
+        }
     }
 }
 

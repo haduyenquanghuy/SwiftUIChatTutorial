@@ -6,6 +6,7 @@
 //
 
 import FirebaseFirestoreSwift
+import Foundation
 
 struct User: Identifiable, Decodable {
     
@@ -14,6 +15,6 @@ struct User: Identifiable, Decodable {
     let fullname: String
     let email: String
     let profileImageUrl: String
-    
-    
 }
+
+let MOCK_USER = User(id: UUID().uuidString, username: "Test", fullname: "Test", email: "test@gmail.com", profileImageUrl: "www.google.com")

@@ -23,8 +23,11 @@ class NewMessageViewModel: ObservableObject {
             self.users = documents.compactMap {
                 try? $0.data(as: User.self)
             }
+            .filter {
+                $0.id != Auth.auth().currentUser?.uid
+            }
             
-            print(self.users)
+//            print(self.users)
         }
     }
 }
